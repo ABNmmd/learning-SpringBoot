@@ -19,6 +19,9 @@ public class UserService {
     }
 
     public User getUser(String id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
     }
+
+    public 
 }
