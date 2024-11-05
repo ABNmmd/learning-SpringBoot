@@ -3,6 +3,7 @@ package dev.learning.freeTesting.userAuth;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,23 +11,17 @@ public class UserService {
     @Autowired
     private UserAuthRepository userRepository;
 
-    public User saveUser(User user) {
-        return userRepository.save(user);
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    public User Register(User newUser) {
+        
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public User Login() {
     }
 
-    public User getUser(String id) {
-        return userRepository.findById(id)
-            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
-    }
+    public String Logout() {
 
-    public void deleteUser(String id) {
-        if (!userRepository.existsById(id)) {
-            throw new UserNotFoundException("User not found with id: " + id);
-        }
-        userRepository.deleteById(id);
     }
 }
